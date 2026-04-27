@@ -1,0 +1,12 @@
+.git
+.gitignore
+Dockerfile
+docker-compose.yml
+docker-compose.yaml
+README.md
+evidence
+kubernetes
+scripts
+*.log
+.env
+mongodb.key

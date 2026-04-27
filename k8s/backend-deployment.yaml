@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: muchtodo-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: muchtodo-backend
+  template:
+    metadata:
+      labels:
+        app: muchtodo-backend
+    spec:
+      containers:
+      - name: backend
+        image: muchtodo-app:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: backend-env-file
+          mountPath: /app/.env
+          subPath: .env
+      volumes:
+      - name: backend-env-file
+        configMap:
+          name: backend-env
